@@ -1,0 +1,88 @@
+﻿@model EmployeeManagementSystem.Models.EmployeeModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="font-weight:700;text-align:center;margin-top:50px;font-family:Bahnschrift">Employee Detail</h2>
+
+<div class="detail px-5 bg-dark " style="border:solid 2px; border-radius:10px;width:60%">
+
+    <h4 style="font-weight: 700; text-align: center; margin-top: 50px; font-family: Bahnschrift; color: whitesmoke">Employee</h4>
+
+    <hr />
+    <div class="det-container" style="width:50%;padding-left:10%">
+        <dl class="dl-horizontal">
+            <dt style="font-family: Bahnschrift;color:whitesmoke;font-size:25px">
+                @*@Html.DisplayNameFor(model => model.empname)*@
+                Employee Name
+            </dt>
+
+            <dd style="font-family: Bahnschrift; color: whitesmoke; font-size: 20px;">
+                @Html.DisplayFor(model => model.empname)
+            </dd>
+
+            <dt style="font-family: Bahnschrift;color:whitesmoke;font-size:25px">
+                @*@Html.DisplayNameFor(model => model.empid)*@
+                Employee Id
+            </dt>
+
+            <dd style="font-family: Bahnschrift; color: whitesmoke; font-size: 20px;">
+                @Html.DisplayFor(model => model.empid)
+            </dd>
+
+            <dt style="font-family: Bahnschrift;color:whitesmoke;font-size:25px;">
+                @*@Html.DisplayNameFor(model => model.deptname)*@
+                Department
+            </dt>
+
+            <dd style="font-family: Bahnschrift;color:whitesmoke;font-size:20px;">
+                @Html.DisplayFor(model => model.deptname)
+            </dd>
+
+            <dt style="font-family: Bahnschrift;color:whitesmoke;font-size:25px;">
+                @*@Html.DisplayNameFor(model => model.dob)*@
+                Age
+            </dt>
+
+            <dd style="font-family: Bahnschrift;color:whitesmoke;font-size:20px;">
+                @(DateTime.Now.Subtract(Model.dob).Days/365)
+            </dd>
+
+            <dt style="font-family: Bahnschrift;color:whitesmoke;font-size:25px;">
+                @*@Html.DisplayNameFor(model => model.gender)*@
+                Gender
+            </dt>
+
+            <dd style="font-family: Bahnschrift;color:whitesmoke;font-size:20px;">
+                @Html.DisplayFor(model => model.gender)
+            </dd>
+
+            <dt style="font-family: Bahnschrift;color:whitesmoke;font-size:25px;">
+                @*@Html.DisplayNameFor(model => model.address)*@
+                Address
+            </dt>
+
+            <dd style="font-family: Bahnschrift;color:whitesmoke;font-size:20px;">
+                @Html.DisplayFor(model => model.address)
+            </dd>
+
+            <dt style="font-family: Bahnschrift;color:whitesmoke;font-size:25px;">
+                @*@Html.DisplayNameFor(model => model.phone)*@
+                Phone
+            </dt>
+
+            <dd style="font-family: Bahnschrift;color:whitesmoke;font-size:20px;">
+                @Html.DisplayFor(model => model.phone)
+            </dd>
+
+        </dl>
+
+
+        <p>
+            @Html.ActionLink("Edit", "EmpEdit", new { id = Model.id }, new { @class = "btn btn-warning mx-3", style = "color:white" })
+            @Html.ActionLink("Back to List", "EmpShow", null, new { @class = "btn btn-secondary", style = "color:white;" })
+        </p>
+    </div>
+</div>

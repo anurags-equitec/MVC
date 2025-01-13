@@ -1,0 +1,109 @@
+﻿@model EmployeeManagementSystem.Models.EmployeeModel
+
+@{
+    ViewBag.Title = "Add Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="font-weight:700;text-align:center;margin-top:50px;font-family:Bahnschrift">Add Employee</h2>
+
+
+
+@using (Html.BeginForm("EmpAdd", "Employee", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="d-flex justify-content-center">
+        <div class="form-horizontal p-3 mx-5 bg-dark" style="border: 3px solid ; border-radius: 10px; width: 500px;">
+            <h4 class="text-center text-white" style="font-family: Bahnschrift">Employee Form</h4>
+            <hr style="color: white; border: 2px solid white;" />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <!-- Employee Name -->
+            <div class="form-group">
+                <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Employee Name</label>
+                <div>
+                    @Html.EditorFor(model => model.empname, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    @Html.ValidationMessageFor(model => model.empname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Employee ID -->
+            <div class="form-group">
+                <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Employee ID</label>
+                <div>
+                    @Html.EditorFor(model => model.empid, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    @Html.ValidationMessageFor(model => model.empid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Department -->
+            <div class="form-group">
+                <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Department</label>
+                <div>
+                    @Html.DropDownListFor(
+                        model => model.depid,
+                        new SelectList(ViewBag.dept, "depid", "deptname"),
+                        new { @class = "form-control" }
+                    )
+                    @Html.ValidationMessageFor(model => model.depid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+                <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Date of Birth</label>
+                <div>
+                    @Html.TextBoxFor(model => model.dob, new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(model => model.dob, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Gender</label>
+                <div class="d-flex gap-3">
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.gender, "Male", new { @class = "form-check-input", id = "genderMale" })
+                        <label for="genderMale" class="form-check-label text-white" style="font-family: Bahnschrift">Male</label>
+                    </div>
+                    <div class="form-check">
+                        @Html.RadioButtonFor(model => model.gender, "Female", new { @class = "form-check-input", id = "genderFemale" })
+                        <label for="genderFemale" class="form-check-label text-white" style="font-family: Bahnschrift">Female</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Address</label>
+                <div>
+                    @Html.TextAreaFor(model => model.address, new { htmlAttributes = new { @class = "form-control", rows=5,cols=50 }})
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Phone</label>
+                <div>
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group mt-3 text-center d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary px-5">Submit</button>
+                <div>
+                    @Html.ActionLink("Back to List", "EmpShow", null, new { @class = "btn btn-secondary  ms-5 ", style = "color:white;" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
