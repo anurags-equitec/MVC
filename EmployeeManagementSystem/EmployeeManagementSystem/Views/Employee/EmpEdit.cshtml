@@ -21,9 +21,9 @@
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            <label id="empname" style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Employee Name</label>
+            <label  style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Employee Name</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.empname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.empname, new { htmlAttributes = new { @class = "form-control",id="empname" } })
                 @Html.ValidationMessageFor(model => model.empname, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="form-group">
             <label id="empid" style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Employee ID</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.empid, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                @Html.EditorFor(model => model.empid, new { htmlAttributes = new { @class = "form-control", id = "empid" , type = "text" } })
                 @Html.ValidationMessageFor(model => model.empid, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,51 +45,37 @@
             </div>*@
 
         <div class="form-group">
-            <label id="depid" style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Department</label>
+            <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Department</label>
             <div>
                 @Html.DropDownListFor(
                     model => model.depid,
                     new SelectList(ViewBag.dept, "depid", "deptname"),
-                    new { @class = "form-control" }
+                    new { @class = "form-control" ,id="depid" }
                 )
                 @Html.ValidationMessageFor(model => model.depid, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <label id="dob" style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Date of Birth</label>
-            <div class="col-md-10">
-            @Html.TextBoxFor(model => model.dob, new { htmlAttributes = new { @class = "form-control", @Value=Model.dob.ToString("dd-MM-yyyy")} })
-            @Html.ValidationMessageFor(model => model.dob, "", new { @class = "text-danger" })
-        </div>
-            @*<div class="col-md-10">
-                @Html.TextBoxFor(model => model.dob, new { @class = "form-control", type = "date", @Value = Model.dob.ToString("dd-MM-yyyy") })
-                @Html.ValidationMessageFor(model => model.dob, "", new { @class = "text-danger" })
-            </div>*@
-        </div>
+       <div class="form-group">
+    <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Date of Birth</label>
+    <div class="col-md-10">
+        @Html.TextBoxFor(model => model.dob, new { @class = "form-control", id = "dob", type = "date", @Value = Model.dob.ToString("yyyy-MM-dd") })
+        @Html.ValidationMessageFor(model => model.dob, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+       <div class="form-group">
+     <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Gender</label>
+     <div class="col-md-10">
+         @Html.TextBoxFor(model => model.gender, new { @class = "form-control", id = "gender" })
+         @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+     </div>
+     </div>
 
         <div class="form-group">
-            <label id="gender" style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Gender</label>
+            <label style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Address</label>
             <div class="col-md-10">
-                
-
-                <div class="d-flex gap-3">
-                    <div class="form-check">
-                        @Html.RadioButtonFor(model => model.gender,"Male", new { @class = "form-check-input", id = "genderMale" })
-                        <label for="genderMale" class="form-check-label text-white" style="font-family: Bahnschrift">Male</label>
-                    </div>
-                    <div class="form-check">
-                        @Html.RadioButtonFor(model => model.gender,"Female", new { @class = "form-check-input", id = "genderFemale" })
-                        <label for="genderFemale" class="form-check-label text-white" style="font-family: Bahnschrift">Female</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label id="address" style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Address</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", id = "address" } })
                 @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -97,7 +83,7 @@
         <div class="form-group">
             <label id="phone" style="font-weight: 700; color: whitesmoke; font-family: Bahnschrift">Phone number</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", id = "phone" } })
                 @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
             </div>
         </div>
